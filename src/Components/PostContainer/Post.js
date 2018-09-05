@@ -1,7 +1,6 @@
 import React from 'react';
 import CommentSection from '../CommentSection/CommentSectionContainer';
 import PostHeader from './PostHeader';
-
 import './Posts.css';
 
 const Post = props => {
@@ -17,6 +16,9 @@ const Post = props => {
           className="post-image"
           src={props.post.imageUrl}
         />
+       <span>{props.post.likes}</span>
+       <button onClick={props.likePost}>Like</button>
+        
       </div>
       <CommentSection comments={props.post.comments} />
     </div>
