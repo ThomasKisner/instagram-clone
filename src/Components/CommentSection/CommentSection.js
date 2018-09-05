@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
 import CommentInput from './CommentInput';
-import Like from '../PostContainer/LikeSection';
 
 class CommentSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: props.comments,
+      comments: this.props.comments,
       comment: '',
-  
+     
     };
   }
 
@@ -21,7 +20,7 @@ class CommentSection extends React.Component {
   }
 
 
-  //Create a function in CommentSection.js called addNewComment that takes in an event and an index number. The  
+  //Create a function in CommentSection.js called addNewComment that takes in an event. The  
   //function will add the comment that is on the event object to the post that is at that index number.
   addNewComment = (event) => {
     if(this.state.comment){
@@ -32,12 +31,11 @@ class CommentSection extends React.Component {
     this.setState({comments: comments, comment: ''});
     };
   }
-  
 
   render() {
     return (
-      <div>
-        
+      <div> 
+        {console.log(this.state.likes)}
         {this.state.comments.map((c, i) => <Comment key={i} comment={c} />)}
         <CommentInput 
           comment={this.state.comment} 
