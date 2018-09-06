@@ -3,26 +3,18 @@ import "./App.css";
 import PostsPage from "./Components/PostsContainer/PostsPage";
 import Authenticate from "./Components/Authentication/Authenticate";
 
-
-
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      
-    };
-
+    this.state = {};
   }
   render() {
     return (
-      <PostsPage
-        searchTerm={this.state.searchTerm}
-        searchPosts={this.searchPostsHandler}
-        filteredPosts={this.state.filteredPosts}
-        posts={this.state.posts}
-      />
+      <div className="App">
+        <PostsPage />
+      </div>
     );
   }
 }
 
-export default App;
+export default Authenticate(App);

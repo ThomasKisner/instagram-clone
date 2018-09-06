@@ -1,9 +1,8 @@
 import React from "react";
-import App from '../../App';
 import Login from '../Login/Login';
 
 
-const Authenticate = componentParam =>
+const Authenticate = App =>
   class extends React.Component {
     constructor(props) {
       super(props);
@@ -11,13 +10,18 @@ const Authenticate = componentParam =>
           loggedIn: false,
       };
     }
-    render() {
-      if(this.state.loggedIn){
-          return < App />
-      } else {
-          return <Login />
-      }
+
+    componentDidMount(){
+      if(!localStorage.getItem('user')) {
+      this.setState({loggedIn:false})
+    } else {
+      this.setState({loggedIn:true});
     }
+  }
+  render() {
+    if (this.state.loggedIn) return <App />;
+    return <Login />;
+  }
   };
 
 export default Authenticate;
